@@ -2,11 +2,13 @@ import React from 'react';
 import logo from '../assets/logo.svg';
 import '../styles/App.css';
 import Fetch from './Fetch';
+import Connect from './Connect';
 
 function App() {
 	return (
 		<div className='App'>
 			<Fetch />
+			<Connect />
 			<header className='App-header'>
 				<img src={logo} className='App-logo' alt='logo' />
 				<p>
