@@ -1,30 +1,33 @@
+// React & Hooks
 import React from 'react';
-import logo from '../assets/logo.svg';
-import '../styles/App.css';
+import styled from 'styled-components';
+
+// Components
 import Fetch from './Fetch';
 import Connect from './Connect';
 
 function App() {
 	return (
-		<div className='App'>
+		<Main className='App'>
 			<Fetch />
 			<Connect />
-			<header className='App-header'>
-				<img src={logo} className='App-logo' alt='logo' />
-				<p>
-					Edit <code>src/App.js</code> and save to reload.
-				</p>
-				<a
-					className='App-link'
-					href='https://reactjs.org'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					Learn React
-				</a>
-			</header>
-		</div>
+		</Main>
 	);
 }
+
+const Main = styled.main`
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #4ca9df;
+	background: linear-gradient(
+			341.49deg,
+			#292e91 -4.23%,
+			rgba(255, 255, 255, 0) 100%
+		),
+		#4ca9df;
+`;
 
 export default App;

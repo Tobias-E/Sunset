@@ -1,9 +1,10 @@
 import React, { useState, useEffect, Suspense } from 'react';
+import styled from 'styled-components';
 
-const url =
-	'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/9bff6245c145509291fedb80938d5d80/55.880340,12.508200';
+const url = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${process.env.REACT_APP_DARK}/55.880340,12.508200`;
 
 const Fetch = () => {
+	//eslint-disable-next-line
 	const [sunset, setSunset] = useState();
 	const [time, setTime] = useState();
 
@@ -27,10 +28,23 @@ const Fetch = () => {
 	}, []);
 	return (
 		<Suspense fallback={<p>Loading...</p>}>
-			<p>{sunset}</p>
-			<p>{time}</p>
+			<Box>
+				<h4>Sunset today</h4>
+				<p>{time}</p>
+			</Box>
 		</Suspense>
 	);
 };
+
+const Box = styled.div`
+	width: 200px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: rgba(255, 255, 255, 0.4);
+	backdrop-filter: blur(10px);
+	border-radius: 10px;
+	margin-top: 100px;
+`;
 
 export default Fetch;
