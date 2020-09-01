@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const url = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${process.env.REACT_APP_DARK}/55.880340,12.508200`;
 
-const Fetch = () => {
+const Fetch = ({ title, day }) => {
 	//eslint-disable-next-line
 	const [sunset, setSunset] = useState();
 	const [time, setTime] = useState();
@@ -15,8 +15,8 @@ const Fetch = () => {
 					method: 'GET',
 				});
 				const result = await response.json();
-				setSunset(result.daily.data[0].sunsetTime);
-				let unix = result.daily.data[0].sunsetTime;
+				setSunset(result.daily.data[day].sunsetTime);
+				let unix = result.daily.data[day].sunsetTime;
 				let date = new Date(unix * 1000);
 				let hour = date.getHours();
 				let minute = date.getMinutes();
@@ -25,14 +25,14 @@ const Fetch = () => {
 				console.log(e);
 			}
 		})();
-	}, []);
+	}, [day]);
 	return (
-		<Suspense fallback={<p>Loading...</p>}>
-			<Box>
-				<h4>Sunset today</h4>
-				<p>{time}</p>
-			</Box>
-		</Suspense>
+		<Box>
+			<Title>Sunset {title}</Title>
+			<Suspense fallback={<p>Loading...</p>}>
+				<Text>{time}</Text>
+			</Suspense>
+		</Box>
 	);
 };
 
@@ -41,10 +41,18 @@ const Box = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: rgba(255, 255, 255, 0.4);
+	background-color: rgba(255, 255, 255, 0.7);
 	backdrop-filter: blur(10px);
 	border-radius: 10px;
-	margin-top: 100px;
+`;
+
+const Title = styled.h4`
+	font-family: Mulish;
+`;
+
+const Text = styled.p`
+	font-family: Roboto;
+	margin-top: 0;
 `;
 
 export default Fetch;
