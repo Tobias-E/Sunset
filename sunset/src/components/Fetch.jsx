@@ -1,3 +1,4 @@
+// React & Hooks
 import React, { useState, useEffect, Suspense } from 'react';
 import styled from 'styled-components';
 
@@ -11,9 +12,7 @@ const Fetch = ({ title, day }) => {
 	useEffect(() => {
 		(async () => {
 			try {
-				const response = await fetch(url, {
-					method: 'GET',
-				});
+				const response = await fetch(url);
 				const result = await response.json();
 				setSunset(result.daily.data[day].sunsetTime);
 				let unix = result.daily.data[day].sunsetTime;
