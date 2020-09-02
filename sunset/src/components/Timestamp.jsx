@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const url = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${process.env.REACT_APP_DARK}/55.880340,12.508200`;
 
-const Fetch = ({ title, day }) => {
+const TimeStamp = ({ title, day }) => {
 	//eslint-disable-next-line
 	const [sunset, setSunset] = useState();
 	const [time, setTime] = useState();
@@ -45,7 +45,7 @@ const Box = styled.div`
 	border-radius: 10px;
 `;
 
-const Title = styled.h4`
+const Title = styled.h3`
 	font-family: Mulish;
 `;
 
@@ -54,4 +54,4 @@ const Text = styled.p`
 	margin-top: 0;
 `;
 
-export default Fetch;
+export default TimeStamp;

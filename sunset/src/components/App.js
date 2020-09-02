@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 // Components
-import Fetch from './Fetch';
+import Timestamp from './Timestamp';
 
 // Images
 import background from '../assets/2244.jpg';
@@ -51,9 +51,9 @@ function App() {
 	}
 	return (
 		<Container className='App'>
-			<Fetch title={'today'} day={0} />
-			<Fetch title={'tomorrow'} day={1} />
-			<Fetch title={'in a week'} day={6} />
+			<Timestamp title={'today'} day={0} />
+			<Timestamp title={'tomorrow'} day={1} />
+			<Timestamp title={'in a week'} day={6} />
 			<Footer>
 				<Links href='https://www.freepik.com/vectors/abstract'>
 					Abstract vector created by vectorpouch
@@ -77,13 +77,6 @@ const Container = styled.div`
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
-	/* background-color: #4ca9df;
-	background: linear-gradient(
-			341.49deg,
-			#292e91 -4.23%,
-			rgba(255, 255, 255, 0) 100%
-		),
-		#4ca9df; */
 `;
 
 const Footer = styled.footer`
@@ -99,6 +92,7 @@ const Footer = styled.footer`
 `;
 
 const Links = styled.a`
+	font-family: Roboto;
 	text-align: center;
 	color: #292e91;
 	text-decoration: none;
