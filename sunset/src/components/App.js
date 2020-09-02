@@ -11,8 +11,6 @@ import background from '../assets/2244.jpg';
 const url = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${process.env.REACT_APP_DARK}/55.880340,12.508200`;
 
 function App() {
-	/* 	const [sunrise, setSunrise] = useState();
-	const [sunset, setSunset] = useState(); */
 	const [sun, setSun] = useState({ rise: undefined, set: undefined });
 
 	useEffect(() => {
@@ -20,8 +18,6 @@ function App() {
 			try {
 				const response = await fetch(url);
 				const result = await response.json();
-				/*   setSunrise(result.daily.data[day].sunriseTime)
-        setSunset(result.daily.data[day].sunsetTime) */
 				setSun({
 					rise: new Date(result.daily.data[0].sunriseTime * 1000),
 					set: new Date(result.daily.data[0].sunsetTime * 1000),
