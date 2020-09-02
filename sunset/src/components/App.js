@@ -27,24 +27,30 @@ function App() {
 			}
 		})();
 	}, []);
-	console.log(sun.set, sun.rise);
-	console.log(convert(sun.set - sun.rise));
 
-	Notification.requestPermission(function (status) {
-		console.log('Notification permission status:', status);
-		displayNotification(status);
-	});
-	function displayNotification() {
-		if (Notification.permission === 'granted') {
-			navigator.serviceWorker.getRegistration().then(function (reg) {
-				reg.showNotification(
-					`Today the sun is up ${convert(
-						sun.set - sun.rise
-					)} hours, enjoy`
-				);
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			Notification.requestPermission(function (status) {
+				console.log('Notification permission status:', status);
+				displayNotification(status);
 			});
-		}
-	}
+			function displayNotification() {
+				if (Notification.permission === 'granted') {
+					navigator.serviceWorker
+						.getRegistration()
+						.then(function (reg) {
+							reg.showNotification(
+								`Today the sun is up ${convert(
+									sun.set - sun.rise
+								)} hours, enjoy`
+							);
+						});
+				}
+			}
+		}, 6000);
+		return () => clearTimeout(timer);
+	}, [sun]);
+
 	return (
 		<Container className='App'>
 			<Timestamp title={'today'} day={0} />
